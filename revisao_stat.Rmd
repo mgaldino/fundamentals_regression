@@ -18,7 +18,7 @@ https://bookdown.org/kevin_davisross/probsim-book/introduction-to-simulation.htm
 ## Revisão de estatística e probabilidade
 
 A média de um conjunto de valores é dada pela soma dos valores, dividdo pelo número de observações. Matematicamente:
-$média = \sum_{i=1}^n{x_i}/n$ para observações $\{x_1, x_2, x_3, ..., x_n\}$
+$media = \sum_{i=1}^n{x_i}/n$ para observações $\{ x_1, x_2, x_3, ..., x_n \}$
 
 Em geral, as observações são uma amostra, e falamos de média amostral, $\overline x$. Ou seja:
 
@@ -75,7 +75,7 @@ Notem que $Cov(X,Y) = Var(X)$.
 
 A covariância é positiva quando ambos X e Y tendem a ter valores acima (ou abaixo) de sua média simultaneamente, enquanto ela é negativa quando uma v.a. tende a ter valores acima da sua média e a outra abaixo.
 
-# Algebra com Esperan~, Variância e Covariância
+# Algebra com Esperança, Variância e Covariância
 Sejam $a$ e $b$ constantes.
 
 1.  Linearidade da Esperença
@@ -86,21 +86,21 @@ Exercício: verifique, com exemplos, que isso é verdade.
 2. Identidade da variância
  $Var(X) = \mathbb{E}[(X - \mathbb{E}[X])^2] = \mathbb{E}[X^2] - \mathbb{E}^2[X]$
  A prova será demonstrada mais adiante.
- 
+
 3. Identidade da Covariância
 
 $Voc(X,Y) = \mathbb{E}[X*Y] - \mathbb{E}[X]*\mathbb{E}[Y] =  \mathbb{E}[(X -  \mathbb{E}[X])*(Y -  \mathbb{E}[Y])]$
 Exercício para o leitor. Prove que isso é verdade.
 
-4, Covariância é simétrica 
+4, Covariância é simétrica
 
 $Cov(X,Y) = Cov(Y,X)$
 
 5. Variância não é linear
  $Var(a*X + b) = a^2*Var(x)$
- 
+
  6. Covariância não é linear
- 
+
  $Cov(a*X + b,Y) = a*Cov(Y,X)$
 # Prova da identidade da variância
 Vamos mostrar que $\mathbb{E}[(X - \mathbb{E}[X])^2] = \mathbb{E}[X^2] - \mathbb{E}^2[X]$
@@ -177,7 +177,7 @@ Note que $\mathbb{E}[(m - \mathbb{E}[m])^2] = Var(m)$ e $\mathbb{E}[(\mathbb{E}[
 
 Portanto, podemos escrever o EQM como: $Var(m) + bias(m)s^2$
 
-## Distribuição de Probabilidade Condicional
+## Distribuição de Probabilidade Conjunta
 
 A Distribuição de probabilidade conjunta de $X$ e $Y$ (definida no mesmo espaço de probabilidade) é uma distribuição de probabilidade dos pares $(x,y)$ e descreve como os valores de $X$ e $Y$ variam conjuntamente. Cada uma das distribuições $X$ e $Y$ soinhas são chamadas de distribuições marginais. Uma distribuição conjunta é como uma máquina que, de acordo com certas regras de probabilidade, solta dois pares de valores.
 
@@ -185,24 +185,24 @@ ex. 1.
 Roleta. Em um casino, um jogo comum é a roleta. Ela consiste normalmente de 32 números (0 a 31), e cada número tem uma cor (preto, vermelho ou verde). Ao girar a roleta, ela solta um número e uma cor. Portanto, podemos pensar que a roleta é uma distribuição conjunta de duas variáveis (números e cores).
 
 Ex. 2.:
-Considere um dado de 4 faces $\(1, 2 ,3, 4\)$. Seja $X$ a soma dos números dos dois dados, e $Y$ o maior valor dos dois dados. O espaço amostral é dado pela tabela abaixo.
+Considere um dado de 4 faces $( 1, 2, 3, 4 )$. Seja $X$ a soma dos números dos dois dados, e $Y$ o maior valor dos dois dados. O espaço amostral é dado pela tabela abaixo.
+
+# col.names = c("resultado do primeiro dado", "resultado do segundo dado"),
 
 ```{r, results='asis'}
 library(knitr)
 library(dplyr)
 library(kableExtra)
-# Definir o espaço amostral
-# Definir o espaço amostral
+#Definir o espaço amostral
+
 espaco_amostral <- expand.grid(1:4, 1:4)
-espaco_amostral <- espaco_amostral %>%
-  rename("resultado do primeiro dado" = Var1) %>%
-  rename("resultado do segundo dado" = Var2)
-espaco_amostral$X <- espaco_amostral$`resultado do primeiro dado` + espaco_amostral$`resultado do segundo dado`
-espaco_amostral$Y <- pmax(espaco_amostral$`resultado do primeiro dado`, espaco_amostral$`resultado do segundo dado`)
+espaco_amostral$X <- espaco_amostral$Var1 + espaco_amostral$Var2
+espaco_amostral$Y <- pmax(espaco_amostral$Var1, espaco_amostral$Var2)
 
 # Criar a tabela
-tabela <- kable(espaco_amostral, caption = "Tabela 2.5: Tabela representando a soma (X) and o maior valor (Y) do lançamento de dois dados de quatro lados") %>%
-  kable_styling(bootstrap_options = "striped")
+tabela <- kable(espaco_amostral, col.names = c("resultado do primeiro dado", "resultado do segundo dado", "X", "Y"),
+                caption = "Tabela 2.5: Tabela representando a soma (X) and o maior valor (Y) do lançamento de dois dados de quatro lados") %>%
+ kable_styling(bootstrap_options = "striped")
 
 # Imprimir a tabela
 print(tabela)
