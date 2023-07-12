@@ -1,2 +1,3 @@
 book_filename: "index.Rmd"
 output_dir: "_book"
+delete_merged_file: true

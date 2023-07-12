@@ -1,4 +1,3 @@
 fig:nice-fig
 tab:nice-tab
-prefácio
 intro
