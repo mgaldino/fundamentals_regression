@@ -1,0 +1,9 @@
+--- 
+title: "Título do Seu Livro"
+author: "Seu Nome"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook: default
+  bookdown::pdf_book: default
+---
