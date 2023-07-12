@@ -1,9 +1,19 @@
---- 
-title: "Título do Seu Livro"
-author: "Seu Nome"
+---
+title: "Introdução à Regressão para Ciências Sociais com R"
+author: "Manoel Galdino"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output:
-  bookdown::gitbook: default
-  bookdown::pdf_book: default
+output: 
+  bookdown::gitbook:
+    config:
+      repo: "mgaldino/fundamentals_regression"
+documentclass: book
+bibliography: [book_freg.bib]
+biblio-style: apalike
+link-citations: yes
 ---
+
+
+# Prefácio
+
+Este livro etc.
